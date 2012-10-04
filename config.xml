@@ -6,7 +6,7 @@
         version   = "1.0.0">
 
     <!-- versionCode is optional and Android only -->
-
+    <title>test_title</title>
     <name>test</name>
 
     <description>
