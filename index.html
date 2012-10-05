@@ -1,46 +1,62 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        
-        <link rel="stylesheet" type="text/css" href="./assets/style.css" />
-       <script type="text/javascript" charset="utf-8">
-        function test(){
-            //alert('a')
-            var i = setInterval(update , 100 )
+  <head>
+    <title>Acceleration Example</title>
 
+    
+    <script type="text/javascript" charset="utf-8">
 
-            //document.getElementById('lala').innerHTML = '<h1>'+cordova+'</h1>';
+    // The watch id references the current `watchAcceleration`
+    var watchID = null;
 
+    // Wait for PhoneGap to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // PhoneGap is ready
+    //
+    function onDeviceReady() {
+        startWatch();
+    }
+
+    // Start watching the acceleration
+    //
+    function startWatch() {
+
+        // Update acceleration every 3 seconds
+        var options = { frequency: 3000 };
+
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    }
+
+    // Stop watching the acceleration
+    //
+    function stopWatch() {
+        if (watchID) {
+            navigator.accelerometer.clearWatch(watchID);
+            watchID = null;
         }
-        count = 0;
-        function update(){
-            //alert('a')
-            count ++;
-            //document.getElementById('box').innerHTML = '<h1>'+count+'</h1>';
-            navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
-        }
+    }
 
-        function onSuccess(acceleration) {
-            document.getElementById('box').innerHTML  =   'Acceleration X: ' + acceleration.x + '<br />' +
-                                                          'Acceleration Y: ' + acceleration.y + '<br />' +
-                                                          'Acceleration Z: ' + acceleration.z + '<br />' +
-                                                          'Timestamp: '      + acceleration.timestamp + '<br />' + count;
-        };
+    // onSuccess: Get a snapshot of the current acceleration
+    //
+    function onSuccess(acceleration) {
+        var element = document.getElementById('accelerometer');
+        element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
+                            'Acceleration Y: ' + acceleration.y + '<br />' +
+                            'Acceleration Z: ' + acceleration.z + '<br />' +
+                            'Timestamp: '      + acceleration.timestamp + '<br />';
+    }
 
-        function onError() {
-            document.getElementById('box').innerHTML = 'onError!' + count;
-        };
+    // onError: Failed to get the acceleration
+    //
+    function onError() {
+        alert('onError!');
+    }
 
-        
-
-        document.addEventListener("deviceready", test, false);
-
-       </script>
-    </head>
-    <body onload="">
-        <h1>Phonegap basic</h1>
-        <p> just a p-tag and a h1-tag<img src="./assets/bass.jpg" style="float:left;width:50%;"/></p>
-        <div id="box">Empty Box</div>
-        <p>now we do the great repo update test</p>
-        <div id="lala">Floop and rEFLOOOOOP</div>
-    </body>
+    </script>
+  </head>
+  <body>
+    <div id="accelerometer">Waiting for accelerometer...</div>
+  </body>
 </html>
