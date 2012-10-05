@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
+        id        = "com.arbitrarysystems.test"
         version   = "2.0.0">
-    <name>Hello World</name>
+    <name>Test</name>
 
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Testing the test
     </description>
 
     <author href="http://phonegap.com" email="support@phonegap.com">
@@ -18,7 +18,7 @@
     <preference name="phonegap-version" value="2.0.0" />
     <preference name="orientation"      value="default" />
     <preference name="target-device"    value="universal" />
-    <preference name="fullscreen"       value="false" />
+    <preference name="fullscreen"       value="true" />
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
@@ -35,6 +35,7 @@
     <icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
     <icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"   gap:role="background" />
 
+    <!--
     <gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
@@ -45,4 +46,8 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
     <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
     <gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
+
+    i commented out this stuff for faster building. The res/screen folder ist placed ouside the www
+
+    -->
 </widget>
