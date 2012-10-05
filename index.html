@@ -1,25 +1,46 @@
 <html>
     <head>
-        <script src="phonegap.js"></script>
-        <link rel="stylesheet" type="text/css" href="assets/style.css" />
+        
+        <link rel="stylesheet" type="text/css" href="./assets/style.css" />
        <script type="text/javascript">
         function test(){
             //alert('a')
             var i = setInterval(update , 100 )
+
+
+            //document.getElementById('lala').innerHTML = '<h1>'+cordova+'</h1>';
+
         }
         count = 0;
         function update(){
             //alert('a')
             count ++;
-            document.getElementById('box').innerHTML = '<h1>'+count+'</h1>';
+            //document.getElementById('box').innerHTML = '<h1>'+count+'</h1>';
+            navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
         }
+
+        function onSuccess(acceleration) {
+            document.getElementById('box').innerHTML  =   'Acceleration X: ' + acceleration.x + '\n' +
+                                                          'Acceleration Y: ' + acceleration.y + '\n' +
+                                                          'Acceleration Z: ' + acceleration.z + '\n' +
+                                                          'Timestamp: '      + acceleration.timestamp + '\n';
+        };
+
+        function onError() {
+            alert('onError!');
+        };
+
+        
+
+        document.addEventListener("deviceready", test, false);
+
        </script>
     </head>
-    <body onload="test()">
+    <body onload="">
         <h1>Phonegap basic</h1>
-        <p> just a p-tag and a h1-tag<img src="assets/bass.jpg" style="float:left;width:50%;"/></p>
+        <p> just a p-tag and a h1-tag<img src="./assets/bass.jpg" style="float:left;width:50%;"/></p>
         <div id="box">Empty Box</div>
         <p>now we do the great repo update test</p>
-        <p>lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!</p>
+        <div id="lala">lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!xxxxr a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!lets enter a whole bunch of text to watchh scrolling behaviour!xxxx</div>
     </body>
 </html>
