@@ -20,14 +20,14 @@
         }
 
         function onSuccess(acceleration) {
-            document.getElementById('box').innerHTML  =   'Acceleration X: ' + acceleration.x + '\n' +
-                                                          'Acceleration Y: ' + acceleration.y + '\n' +
-                                                          'Acceleration Z: ' + acceleration.z + '\n' +
-                                                          'Timestamp: '      + acceleration.timestamp + '\n';
+            document.getElementById('box').innerHTML  =   'Acceleration X: ' + acceleration.x + '<br />' +
+                                                          'Acceleration Y: ' + acceleration.y + '<br />' +
+                                                          'Acceleration Z: ' + acceleration.z + '<br />' +
+                                                          'Timestamp: '      + acceleration.timestamp + '<br />' + count;
         };
 
         function onError() {
-            alert('onError!');
+            document.getElementById('box').innerHTML = 'onError!' + count;
         };
 
         
