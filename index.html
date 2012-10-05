@@ -1,62 +1,102 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Acceleration Example</title>
+    <title>Capture Photo</title>
 
-    
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.4.1.js"></script>
     <script type="text/javascript" charset="utf-8">
 
-    // The watch id references the current `watchAcceleration`
-    var watchID = null;
+    var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value 
 
-    // Wait for PhoneGap to load
+    // Wait for PhoneGap to connect with the device
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    document.addEventListener("deviceready",onDeviceReady,false);
 
-    // PhoneGap is ready
+    // PhoneGap is ready to be used!
     //
     function onDeviceReady() {
-        startWatch();
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
     }
 
-    // Start watching the acceleration
+    // Called when a photo is successfully retrieved
     //
-    function startWatch() {
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64 encoded image data
+      // console.log(imageData);
 
-        // Update acceleration every 3 seconds
-        var options = { frequency: 3000 };
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
 
-        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      smallImage.src = "data:image/jpeg;base64," + imageData;
     }
 
-    // Stop watching the acceleration
+    // Called when a photo is successfully retrieved
     //
-    function stopWatch() {
-        if (watchID) {
-            navigator.accelerometer.clearWatch(watchID);
-            watchID = null;
-        }
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
     }
 
-    // onSuccess: Get a snapshot of the current acceleration
+    // A button will call this function
     //
-    function onSuccess(acceleration) {
-        var element = document.getElementById('accelerometer');
-        element.innerHTML = 'Acceleration X: ' + acceleration.x + '<br />' +
-                            'Acceleration Y: ' + acceleration.y + '<br />' +
-                            'Acceleration Z: ' + acceleration.z + '<br />' +
-                            'Timestamp: '      + acceleration.timestamp + '<br />';
+    function capturePhoto() {
+      // Take picture using device camera and retrieve image as base64-encoded string
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
     }
 
-    // onError: Failed to get the acceleration
+    // A button will call this function
     //
-    function onError() {
-        alert('onError!');
+    function capturePhotoEdit() {
+      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
+      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true }); 
+    }
+
+    // A button will call this function
+    //
+    function getPhoto(source) {
+      // Retrieve image file location from specified source
+      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+        destinationType: destinationType.FILE_URI,
+        sourceType: source });
+    }
+
+    // Called if something bad happens.
+    // 
+    function onFail(message) {
+      alert('Failed because: ' + message);
     }
 
     </script>
   </head>
   <body>
-    <div id="accelerometer">Waiting for accelerometer...</div>
+    <button onclick="capturePhoto();">Capture Photo</button> <br>
+    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+    <img style="display:none;" id="largeImage" src="" />
   </body>
 </html>
