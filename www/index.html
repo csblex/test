@@ -24,7 +24,7 @@
         
         <div data-role="content">   
             <p id="accelerometer" >Hello world</p>
-            <p><a href="#second" data-transition="flip" >second page</a></p>      
+            <p><a href="#second" data-transition="flip" onclick="stopWatch();" >second page</a></p>      
         </div><!-- /content -->
 
 
@@ -39,7 +39,7 @@
 
         <div data-role="content">   
             <p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my ID is beeing clicked.</p>      
-            <p><a href="#first" data-transition="flip">first page</a></p>   
+            <p><a href="#first" data-transition="flip" onclick="startWatch();">first page</a></p>   
         </div><!-- /content -->
 
 
