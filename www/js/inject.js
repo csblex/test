@@ -28,8 +28,17 @@ function initCanvas(){
     console.log('hello canvas',w,h,context);
     iv = setInterval( addLine , 20 );
 
-    $('#button1').bind('tap taphold' , function(){ buttonclick(1); } );
-    $('#button2').bind('tap taphold' , function(){ buttonclick(2); } );
+
+    $.event.special.tap.tapholdThreshold = 20;
+
+    $('#button1').bind('tap taphold' , function(event){
+        //event.preventDefault();
+        buttonclick(1);
+    } );
+    $('#button2').bind('tap taphold' , function(event){
+        //event.preventDefault();
+        buttonclick(2);
+    } );
 
     initted = true;
 
