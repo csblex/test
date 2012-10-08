@@ -16,9 +16,11 @@ var h;
 var iv;
 
 function initCanvas(){
+    //return;
     w = $('#canvaspage').width();
     h = $('#canvaspage').height()-3;
-    $('#canvaspage').html('<canvas id="cv" width="'+w+'" height="'+h+'"></canvas>');
+    $('#canvaspage').prepend('<canvas id="cv" width="'+w+'" height="'+h+'"></canvas>');
+    
     var canvas = document.getElementById("cv");
     context = canvas.getContext("2d");
     
@@ -37,6 +39,25 @@ function addLine(){
     context.stroke();
     lineY = (lineY+1) % h;
     //console.log(lineY , rex );
+}
+
+function buttonclick(i){
+    console.log('click');
+    var col = '#ff0000';
+    if( i == 1 ) col = '#00ff00';
+
+    rx = Math.floor( Math.random() * w );
+    ry = Math.floor( Math.random() * h );
+
+    context.beginPath();
+    context.arc(rx, ry, 100, 0, 2 * Math.PI, false);
+    context.fillStyle = col;
+    context.fill();
+    context.lineWidth = 2;
+    context.strokeStyle = "black";
+    context.stroke();
+
+
 }
 
 function rhex(){
