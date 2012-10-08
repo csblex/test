@@ -14,9 +14,10 @@ var lineY = 0;
 var w;
 var h;
 var iv;
+var initted = false;
 
 function initCanvas(){
-    //return;
+    if(initted) return;
     w = $('#canvaspage').width();
     h = $('#canvaspage').height()-3;
     $('#canvaspage').prepend('<canvas id="cv" width="'+w+'" height="'+h+'"></canvas>');
@@ -27,6 +28,10 @@ function initCanvas(){
     console.log('hello canvas',w,h,context);
     iv = setInterval( addLine , 20 );
 
+    $('#button1').bind('tap' , function(){ buttonclick(1); } );
+    $('#button2').bind('tap' , function(){ buttonclick(2); } );
+
+    initted = true;
 
 }
 
