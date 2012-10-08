@@ -17,13 +17,19 @@ function startWatch() {
 
     // Update acceleration every 3 seconds
     var options = { frequency: 200 };
-
-    watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    var element = document.getElementById('accelerometer');
+    element.innerHTML = "waiting...";
+    var delay = setTimeout( function(){
+        watchID = navigator.accelerometer.watchAcceleration(onSuccess, onError, options);
+    } , 2000);
+    
 }
 
 // Stop watching the acceleration
 //
 function stopWatch() {
+    var element = document.getElementById('accelerometer');
+    element.innerHTML = "waiting...";
     if (watchID) {
         navigator.accelerometer.clearWatch(watchID);
         watchID = null;
