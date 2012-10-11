@@ -16,10 +16,9 @@
     <feature name="http://api.phonegap.com/1.0/device" />
 
     <preference name="phonegap-version" value="2.0.0" />
-    <preference name="orientation"      value="landscape" />
+    <preference name="orientation"      value="portrait" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
-    <preference name="autorotate" value="false" readonly="true"/>
 
 
     <icon src="icon.png" />
@@ -62,7 +61,6 @@
     <feature name="http://api.phonegap.com/1.0/media"/>
     <feature name="http://api.phonegap.com/1.0/network"/>
     <feature name="http://api.phonegap.com/1.0/notification"/>
-    <feature name="http://api.phonegap.com/1.0/device"/>
 
 
 
