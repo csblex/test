@@ -71,6 +71,8 @@ function buttonclick(i){
     context.strokeStyle = "black";
     context.stroke();
 
+    navigator.notification.vibrate(100);
+    //navigator.notification.alert('message', function(){} , 'title' , 'buttonname');
 
 }
 
