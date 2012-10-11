@@ -19,10 +19,8 @@
     <preference name="orientation"      value="landscape" />
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
-<<<<<<< HEAD
     <preference name="autorotate" value="false" readonly="true"/>
-=======
->>>>>>> cb52a0690a72f9816db30a0424dff7c918f6ab84
+
 
     <icon src="icon.png" />
     <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
