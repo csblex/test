@@ -16,15 +16,21 @@
 
   </head>
 
+  <body onload=";">
+    
+    <div data-role="page" id="canvaspage">
+        <img src="img/testbutton.png" id="button1" data-role="button" style="position:absolute;left:5px;top:5px;" />
+        <img src="img/testbutton.png" id="button2" data-role="button" style="position:absolute;right:5px;top:5px;" />
+    </div>
 
-    <div data-role="page" id="first">
+    <div data-role="page" id="first" >
         <div data-role="header">
             <h1>Example</h1>
         </div><!-- /header -->
         
         <div data-role="content">   
-            <p id="accelerometer" >Hello world</p>
-            <p><a href="#second" data-transition="flip" >second page</a></p>      
+            <p id="accelerometer">Hello world</p>
+            <p><a href="#second" data-transition="flip" onclick="stopWatch();" >second page</a></p>      
         </div><!-- /content -->
 
 
@@ -34,12 +40,12 @@
     <div data-role="page" id="second">
 
         <div data-role="header">
-            <h1>Bar</h1>
+            <h1>Am I Hydrated or what? </h1>
         </div><!-- /header -->
 
         <div data-role="content">   
             <p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my ID is beeing clicked.</p>      
-            <p><a href="#first" data-transition="flip">first page</a></p>   
+            <p><a href="#first" data-transition="flip" onclick="startWatch();">first page</a></p>   
         </div><!-- /content -->
 
 
