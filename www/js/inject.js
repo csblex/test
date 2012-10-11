@@ -16,17 +16,29 @@ var h;
 var iv;
 var initted = false;
 
+var point;
+var vector;
+
 function initCanvas(){
     if(initted) return;
     w = $('#canvaspage').width();
     h = $('#canvaspage').height()-3;
     $('#canvaspage').prepend('<canvas id="cv" width="'+w+'" height="'+h+'"></canvas>');
     
+    point = {};
+    point.x = w * 0.5;
+    point.y = h * 0.5;
+
+    vector = {x:0,y:0};
+
     var canvas = document.getElementById("cv");
     context = canvas.getContext("2d");
     
     console.log('hello canvas',w,h,context);
-    iv = setInterval( addLine , 20 );
+    iv = setInterval( function(){
+            addLine();
+            updatePoint();
+    } , 20 );
 
 
     $.event.special.tap.tapholdThreshold = 20;
@@ -40,8 +52,29 @@ function initCanvas(){
         buttonclick(2);
     } );
 
+
+    var watchID = navigator.accelerometer.watchAcceleration(function(a){
+        vector.x = a.x * 1;
+        vector.y = a.y * -1;
+    }, function(){/*error*/},{ frequency: 100 });
+
     initted = true;
 
+}
+
+function updatePoint(){
+
+    point.x += vector.x;
+    point.y += vector.y;
+    point.x = Math.max( Math.min(point.x , w) , 0);
+    point.y = Math.max( Math.min(point.y , h) , 0);
+
+    context.beginPath();
+    context.arc(point.x, point.y, 10, 0, 2 * Math.PI, false);
+    context.fillStyle = '#000';
+    context.fill();
+    
+    
 }
 
 function addLine(){
