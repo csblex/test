@@ -5,10 +5,10 @@
         version   = "2.0.0">
     <name>Test</name>
 
-    <preference name="orientation"      value="landscape" />
+    <preference name="orientation" value="landscape" />
     <preference name="phonegap-version" value="2.0.0" />
-    <preference name="target-device"    value="universal" />
-    <preference name="fullscreen"       value="false" />
+    
+    <preference name="fullscreen" value="true" />
 
     <description>
         Testing the test
