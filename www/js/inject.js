@@ -63,9 +63,9 @@ function initCanvas(){
 }
 
 function updatePoint(){
-
-    point.x += vector.x;
-    point.y += vector.y;
+    s = 3;
+    point.x += vector.x * s;
+    point.y += vector.y * s;
     point.x = Math.max( Math.min(point.x , w) , 0);
     point.y = Math.max( Math.min(point.y , h) , 0);
 
